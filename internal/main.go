@@ -7,6 +7,7 @@ import (
 	originalMongo "go.mongodb.org/mongo-driver/mongo"
 
 	"github.com/pitakill/investment/internal/http"
+	"github.com/pitakill/investment/internal/mongo"
 )
 
 // AppOptions configures the App
@@ -29,16 +30,16 @@ type App struct {
 
 // NewApp returns an App wint the AppOptions
 func NewApp(options *AppOptions) *App {
-	// mngOptions := &mongo.Options{
-	//   URI: options.MongoURI,
-	// }
-	// mng, _ := mongo.NewClient(mngOptions)
+	mngOptions := &mongo.Options{
+		URI: options.MongoURI,
+	}
+	mng, _ := mongo.NewClient(mngOptions)
 
 	srv := http.NewServer(
 		http.WithAppName(options.AppName),
 		http.WithIdleTimeout(20),
 		http.WithPort(options.Port),
-		// http.WithMongo(mng),
+		http.WithMongo(mng),
 	)
 
 	return &App{

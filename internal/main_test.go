@@ -7,7 +7,7 @@ import (
 
 func TestNewApp(t *testing.T) {
 	options := &AppOptions{
-		HttpPort: "80",
+		Port: "80",
 	}
 
 	want := &App{
