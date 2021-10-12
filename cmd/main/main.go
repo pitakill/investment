@@ -23,13 +23,11 @@ var (
 )
 
 func main() {
-	if err := loadEnv(root); err != nil {
-		// log.Fatalln(err)
-	}
+	loadEnv(root)
 
 	options := &internal.AppOptions{
 		AppName:  root,
-		HttpPort: os.Getenv("HTTP_PORT"),
+		Port:     os.Getenv("PORT"),
 		MongoURI: os.Getenv("MONGO_URI"),
 	}
 

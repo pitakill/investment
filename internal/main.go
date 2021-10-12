@@ -13,8 +13,8 @@ import (
 type AppOptions struct {
 	// AppName is the name of the binary and also the root path
 	AppName string
-	// HttpPort is the listening port of the http server
-	HttpPort string
+	// Port is the listening port of the http server
+	Port string
 	// MongoURI is the listening URI of the mongo server
 	MongoURI string
 }
@@ -37,7 +37,7 @@ func NewApp(options *AppOptions) *App {
 	srv := http.NewServer(
 		http.WithAppName(options.AppName),
 		http.WithIdleTimeout(20),
-		http.WithPort(options.HttpPort),
+		http.WithPort(options.Port),
 		// http.WithMongo(mng),
 	)
 
