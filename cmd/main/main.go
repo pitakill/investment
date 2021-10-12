@@ -24,7 +24,7 @@ var (
 
 func main() {
 	if err := loadEnv(root); err != nil {
-		log.Fatalln(err)
+		// log.Fatalln(err)
 	}
 
 	options := &internal.AppOptions{
